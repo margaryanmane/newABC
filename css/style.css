@@ -1,0 +1,242 @@
+html {
+    overflow: hidden;
+}
+body{
+    margin: 0;
+    padding: 0;
+    /* background-image: url('image/loading.png'); */
+    background-color: hsl(180, 6%, 6%);
+    background-size: cover;
+    min-height: 100vh;
+    font-family: Pacifico, Arial;
+}
+
+/* Start Loading */
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    text-align: center;
+    perspective: 600px;
+    perspective-origin: bottom;
+}
+.loading .left {
+    float: left;
+    background:black;
+}
+.loading .right {
+    float: right;
+    background:black;
+    background-position: 30%;
+}
+.loading .left,
+.loading .right {
+    width: 50%;
+    height: 100%;
+    transition: all 1.5s ease-in-out;
+    background-size: 350% 1200%;
+}
+.loading .left.hideLoad {
+    transform: translateX(-105%);
+}
+.loading .right.hideLoad {  
+    transform: translateX(105%);
+}
+.loading .loader {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    width: 350px;
+    margin-left: -175px;
+    color: #FFF;
+    text-align: center;
+}
+.loading > h2 {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+    padding: 30px 15px;
+    border-radius: 10px;
+    border: 2px solid  teal;
+    font-size: 90px;
+    font-family: Pacifico, Arial;
+    letter-spacing: 2px;
+    color :  teal;
+    z-index: 999; 
+    margin-bottom: 120px;
+    text-shadow: 0 0 20px #000;
+    transform: rotateX(15deg) scale(1.1, 1.3);
+}
+.loading > h2.hideLoad {
+    top: -500px;
+}
+.loading .loader,
+.loading .progress-bar {
+    font-size: 15px;
+}
+.loading .loader .titleLoad {
+    margin-bottom: 30px;
+    font-size: 17px;  
+    color:  teal;  
+}
+.loading .loader.hideLoad {
+    bottom: -500px;
+}
+
+.progress-bar {
+    height: 25px;
+    background-color: teal;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+/* End Loading */
+
+/* start header */
+header{
+    margin: 7px 0;
+    color: #fff;
+    font-size: 25px;
+    font-family: Pacifico, Arial;
+    text-align: center;
+    /* font-weight: 800; */
+}
+
+.text {
+    text-decoration: solid teal underline;
+}
+
+ /* start menu */
+nav {
+    background-color: teal;
+}
+ li, a {
+    margin: 75px 0 -55px 0;
+    color: teal;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    list-style: none;
+    text-transform: none;
+    line-height: 1.8;
+    outline: 0;
+    display: none;
+ }
+
+ li {
+     width: 230px;
+     text-indent: 56px;
+ }
+
+ a:focus{
+     display: block;
+     color: grey;
+     background-color: #eee;
+     transition: all .5s;
+ }
+
+ #triger, #burger, #burger::before, #burger::after {
+     position: absolute;
+     top: 180px;
+     left: 25px;
+     background: teal;
+     width: 30px;
+     height: 5px;
+     transition: .2s ease;
+     cursor: pointer;
+     z-index: 1;
+ }
+
+ #trigger {
+     height: 25px;
+     background: none;
+ }
+
+ #burger::before {
+     content: "";
+     top: 10px;
+    left: 0;
+ }
+
+ #burger::after{
+     content: "";
+     top: 20px;
+     left: 0;
+ }
+
+ #menu-toggle:checked + #trigger + #burger {
+    top: 190px;
+    transform: rotate(180deg);
+    transition: transform .2s ease;
+ }
+
+ #menu-toggle:checked + #trigger + #burger::before {
+     width: 20px;
+     top: -2px;  /**/
+     left: 18px;
+     transform: rotate(45deg) translateX(-5px);
+     transition: transform .2s ease;
+ }
+
+ #menu-toggle:checked + #trigger + #burger::after {
+     width: 20px;
+     top: 2px;  
+     left: 18px;
+     transform: rotate(-45deg) translateX(-5px);
+     transition: transform .2s ease;
+ }
+
+ .menu {
+     position: absolute;
+     margin: 0;
+     padding: 0;
+     width: 110px;
+     height: 110px;
+     background-color: #fff;
+     border-bottom-right-radius: 100%;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+     animation: not-checked-anim .2s both;
+     transition: .2s;
+ }
+
+ #menu-toggle:checked + #trigger + #burger + .menu {
+     animation: checked-anim 1s ease both;
+ }
+
+ #menu-toggle:checked + #trigger ~ .menu > li,a{
+     display: block;
+ }
+
+ [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+     display: none;
+ }
+
+ @keyframes checked-anim {
+    50% {
+        width: 3000px;
+        height: 3000px;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+@keyframes not-checked-anim {
+    0% {
+        width: 3000px;
+        height: 3000px;
+    }
+}
+
+
+/* end menu */
